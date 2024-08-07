@@ -1,0 +1,172 @@
+.footer {
+  margin: 20px 0;
+  background-color: darkgreen;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  min-height: 400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 0 50px;
+  background: white;
+}
+
+.image {
+  object-fit: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 10px;
+  border-radius: 15px;
+}
+.logoName {
+  font-size: 40px;
+  color: green;
+  font-weight: 300;
+}
+.logoName span {
+  font-size: 30px;
+  color: darkgreen;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+.navItem {
+  min-width: auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 5px;
+  margin: 0 50px;
+}
+.itemTitle {
+  font-size: 30px;
+  font-weight: 600;
+}
+.navItemLink{
+  opacity: 0.9;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 5px;
+  transition: all 150ms;
+}
+.navItemLink:hover {
+  opacity: 1;
+}
+.navItemLinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navItemSocial {
+  background: grey;
+  cursor: pointer;
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  border-radius:  0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms;
+  padding: 5px;
+}
+.navItemSocial:hover {
+  background-color: white;
+}
+
+.navItemSocialLink {
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  transition: all 200ms;
+  border-radius: 50%;
+}
+.navItemSocial:hover .navItemSocialLink {
+  color: green;
+}
+
+
+.copy {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+}
+/*RESPONSIVE*/
+
+@media screen and (max-width:1260px) {
+  
+  .logoName{
+    font-size:30px;
+  }
+  .logoName span {
+    font-size:20px;
+  }
+  .navItem{
+    margin:0 40px;
+  }
+}
+
+@media screen and (max-width:1194px) {
+.navItem{
+  margin: 0 30px;
+}  
+
+}
+@media screen and (max-width:1076px) {
+  .navItem{
+    margin: 0 20px;
+  }
+ 
+  .navItemSocial{
+    width: 30px;
+    height: 30px;
+    margin: 0 8px;
+    padding: 3px;
+  } 
+  
+
+  .navItemLink{
+    font-size: 14px;
+  }  
+  
+  }
+
+  @media screen and (max-width:962px) {
+  .container{
+    justify-content: center;
+  }
+  .itemTitle{
+    font-size: 40px;
+  }
+  .navItemLink{
+    font-size: 20px;
+  }
+    .nav{
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+    }
