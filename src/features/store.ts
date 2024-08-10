@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './count/countSlice'
+
 
 export function makeStore() {
   return configureStore({
     reducer: {
-      counter: counterReducer,
+     
     },
   })
 }
