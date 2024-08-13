@@ -10,7 +10,7 @@
 }
 .link {
   text-decoration: none;
-  color: green;
+  color: rgb(7, 136, 7);
   font-size: 20px;
   padding: 5px;
   margin: 0 10px;
@@ -81,6 +81,7 @@
   scale: 1.3;
 }
 .navItem {
+  z-index: 10;
   position: relative;
   padding: 5px;
   text-align: center;
@@ -114,6 +115,7 @@
 }
 
 .hamburgerLinks {
+  z-index: 10;
   display: none;
   position: absolute;
   background-color: whitesmoke;
@@ -189,7 +191,6 @@
     display: block;
     right: 0.5rem;
     top: 6rem;
-
   }
 }
 
@@ -199,31 +200,39 @@
   }
   .hamburgerLinks {
     width: 100%;
-    margin:0;
+    margin: 0;
   }
-  
 }
 
-@media screen and (max-width:675px)
-{
-  .logoContainer{
-    margin:0 5px;
+@media screen and (max-width: 675px) {
+  .logoContainer {
+    margin: 0 5px;
   }
-  .logoName{
+  .logoName {
     font-size: 22px;
   }
   .logoName .span {
     font-size: 18px;
   }
-  .searchInput{
+  .searchInput {
     width: 120px;
   }
-  .searchIcon{
+  .searchIcon {
     width: 20px;
     height: 20px;
   }
-  .searchContainer{
-    margin:0 10px;
+  .searchContainer {
+    margin: 0 10px;
   }
- 
+  .navItem {
+    text-align: end;
+  }
+
+  .navItem::before {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  .navItem:hover::before {
+    width: 100%;
+  }
 }
