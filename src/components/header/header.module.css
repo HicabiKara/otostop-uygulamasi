@@ -5,9 +5,13 @@
   justify-content: space-between;
   background-color: whitesmoke;
   height: 120px;
-  margin: 0 auto;
+  margin:0 auto;
   width: 100%;
 }
+.container button {
+  cursor: pointer;
+}
+
 .link {
   text-decoration: none;
   color: rgb(7, 136, 7);
@@ -86,6 +90,7 @@
   padding: 5px;
   text-align: center;
   border: none;
+  background-color: whitesmoke;
 }
 
 .navItem::before {
@@ -234,5 +239,36 @@
   }
   .navItem:hover::before {
     width: 100%;
+  }
+}
+
+@media screen and (max-width:440px){
+  .hamburgerIcon{
+  font-size: 15px;
+  margin: 0 5px;
+  }
+  .image{
+    width: 30px;
+    height: 30px;
+    margin:0;
+  }
+  .searchIcon{
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+  }
+  .logoName{
+    font-size:20px;
+    margin-left:5px;
+
+  }
+  .searchContainer{
+    margin-right: 5px;
+  }
+  .searchInput{
+    width: 90px;
+  }
+  .logoName span {
+    font-size:15px;
   }
 }
