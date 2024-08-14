@@ -1,11 +1,12 @@
-
+import Hero from "@/components/hero/Hero";
+import Features from "@/components/features/Features";
 import styles from "./page.module.css";
-import Counter from "@/features/count/Counter";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Counter/>
-    </div>
+    <main  className={styles.container}>
+      <Hero />
+      <Features/>
+    </main>
   );
 }
