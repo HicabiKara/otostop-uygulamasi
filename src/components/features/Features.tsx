@@ -1,10 +1,25 @@
+"use client"
 import React from "react";
 import styles from "./features.module.css";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 const Features = () => {
+  useGSAP(()=>{
+    gsap.to("#content",{
+      scrollTrigger:{
+        trigger:"#content",
+        start:"top 90%"
+      },
+      opacity:1,
+      y:"0",
+      delay:1.5,
+      duration:1
+    })
+  })
   return (
     <section className={styles.container}>
-      <div className={styles.column}>
+      <div id="content" className={styles.column}>
         <h1>Yolculuğa mı çıkmak istiyorsunuz?</h1>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
@@ -57,7 +72,7 @@ const Features = () => {
         </div>
       </div>
 
-      <div className={styles.column}>
+      <div id="content" className={styles.column}>
         <h1>Yol arkadaşı mı arıyorsunuz?</h1>
         <div className={styles.content}>
           <div className={styles.imageContainer}>

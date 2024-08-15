@@ -14,13 +14,16 @@
 }
 
 .leftContent {
+  opacity: 0;
   padding: 10px;
   color: lightgreen;
   font-size: 55px;
   position: relative;
+  transform:translateY(50px)
 }
 
 .linkContainer {
+  opacity: 0;
   background-color: lightgreen;
   display: flex;
   align-items: center;
@@ -35,7 +38,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   cursor: pointer;
-
+  transform:translateY(40px);
   z-index: 2;
   color: white;
 }
@@ -73,12 +76,14 @@
 }
 
 .rightBar {
+  opacity: 0;
   background-color: lightgreen;
   padding: 10px;
   width: 50%;
   height: 700px;
   border-radius: 250px 0 0 250px;
   position: relative;
+  transform:translateX(1000px);
 }
 
 .image {
