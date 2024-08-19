@@ -7,12 +7,14 @@
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  background-color: green;
+  background-color: rgba(128, 128, 128, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 10px;
   border-radius: 50px;
 }
 
 .title {
-  margin: 20px 0;
+  margin: 20px auto;
   padding: 10px;
 }
 
@@ -37,10 +39,9 @@
 
 .item input {
   border: none;
-  padding: 15px;
+  padding: 25px 15px 15px 15px;
   border-radius: 10px;
   width: 100%;
-  padding-top: 25px;
   font-size: 16px;
   box-sizing: border-box;
 }
@@ -103,4 +104,38 @@
 
 .button:hover::before {
   width: 100%;
+}
+
+
+/* RESPONSIVE */
+
+@media screen and (max-width:1111px){
+  .container{
+    width: 350px;
+    gap:10px;
+  }
+
+  .title{
+    margin:10px auto;
+  }
+
+  .title h1{
+    font-size:35px;
+  }
+  .item{
+    width: 250px;
+    margin:25px 0;
+  } 
+
+  .item input:focus + label,
+.item input:not(:placeholder-shown) + label{
+  font-size: 15px;
+  padding:0 10px;
+}
+
+.button {
+  min-width: 250px;
+  font-size:25px;
+}
+
 }

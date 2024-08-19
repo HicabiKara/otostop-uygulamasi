@@ -19,7 +19,7 @@ const SignUpForm = () => {
 
         <div className={styles.item}>
           <input type="text" id="email" required placeholder=" " />
-          <label htmlFor="email">İsim Soyisim</label>
+          <label htmlFor="email">Ad Soyad</label>
         </div>
         <div className={styles.item}>
           <input min={0} type="number" id="email" required placeholder=" " />
