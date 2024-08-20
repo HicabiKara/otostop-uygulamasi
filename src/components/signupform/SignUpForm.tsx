@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./signupform.module.css";
+import Link from "next/link";
 
 const SignUpForm = () => {
   return (
@@ -26,9 +27,12 @@ const SignUpForm = () => {
           <label htmlFor="email">Yaş</label>
         </div>
       </div>
+      <div className={styles.actionContainer}>
       <button className={styles.button}>
         <span>Üye Ol</span>
       </button>
+      <div className={styles.linkContainer}>Zaten bir hesabınız var mı ? <Link href="/signin" className={styles.link}>Giriş Yap</Link></div>
+      </div>
     </form>
   );
 };
