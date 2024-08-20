@@ -5,7 +5,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .leftBar {
@@ -19,7 +18,7 @@
   color: lightgreen;
   font-size: 55px;
   position: relative;
-  transform:translateY(50px)
+  transform: translateY(50px)
 }
 
 .linkContainer {
@@ -38,7 +37,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   cursor: pointer;
-  transform:translateY(40px);
+  transform: translateY(40px);
   z-index: 2;
   color: white;
 }
@@ -46,10 +45,13 @@
 .link {
   transition: color 0.3s ease-in-out;
   color: white;
+  text-decoration: none;
+  z-index: 1;
 }
 
 .linkContainer:hover .link {
   color: lightgreen;
+
 }
 
 .linkContainer::before {
@@ -70,10 +72,6 @@
   width: 100%;
 }
 
-.linkContainer .link {
-  text-decoration: none;
-  z-index: 1;
-}
 
 .rightBar {
   opacity: 0;
@@ -83,7 +81,7 @@
   height: 700px;
   border-radius: 250px 0 0 250px;
   position: relative;
-  transform:translateX(1000px);
+  transform: translateX(1000px);
 }
 
 .image {
