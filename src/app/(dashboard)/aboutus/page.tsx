@@ -7,7 +7,7 @@ const Hakkımızda = () => {
       <section className={styles.content}>
         <h1 className={styles.title}>Hakkımızda</h1>
         <p className={styles.text}>
-          Web Otostop Uygulaması, kullanıcıların güvenli ve ekonomik yolculuklar
+          Yol Arkadaşı, kullanıcıların güvenli ve ekonomik yolculuklar
           gerçekleştirmesini hedefleyen yenilikçi bir platformdur. Sürücüler ve
           yolcuları buluşturarak hem çevre dostu ulaşımı destekler hem de
           topluluklar arasında bağ kurar.
