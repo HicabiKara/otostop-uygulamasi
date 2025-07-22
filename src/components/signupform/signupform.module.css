@@ -87,7 +87,7 @@
 
 .button span {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .button::before {
@@ -111,6 +111,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.p{
+  color:red;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .linkContainer {
@@ -137,6 +142,38 @@
 .link:hover {
   opacity: 1;
 }
+
+.genderItem {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.genderLabel {
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 2px;
+  color: green;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.genderOptions {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.genderOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  color: white;
+}
+
 
 /* RESPONSIVE */
 
@@ -168,4 +205,16 @@
     min-width: 250px;
     font-size: 25px;
   }
+    .genderOptions {
+    gap: 15px;
+  }
+
+  .genderLabel {
+    font-size: 17px;
+  }
+
+  .genderOption {
+    font-size: 14px;
+  }
 }
+

@@ -2,8 +2,21 @@ import React from "react";
 import SignUpForm from "@/components/signupform/SignUpForm";
 import styles from "./register.module.css";
 import Image from "next/image";
+import { Metadata } from "next";
+import { getServerAuthSession } from "@/lib/getServerAuthSession";
+import {redirect} from "next/navigation"
+import { authOptions } from "@/lib/authOptions";
+export const metadata:Metadata ={
+  title:"Üye Ol",
+  description:"Register page for new users",
+}
 
-const Register = () => {
+const Register = async () => {
+  const session= await getServerAuthSession(authOptions)
+
+  if(session){
+    redirect("/")
+  }
   return (
     <main className={styles.container}>
        <Image

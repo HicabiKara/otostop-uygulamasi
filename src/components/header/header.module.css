@@ -18,7 +18,17 @@
   font-size: 20px;
   padding: 5px;
   margin: 0 10px;
+
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: inherit;
+  display: inline;
 }
+
+
 
 .logoContainer {
   display: flex;

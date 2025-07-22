@@ -1,19 +1,30 @@
 "use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Styles from "@/components/header/header.module.css";
 import Link from "next/link";
 import { LuSearch } from "react-icons/lu";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
-import { useState } from "react";
+import { useSession} from "next-auth/react";
+import { logoutUser } from "@/lib/logout";
+
 
 const Header = () => {
+  const { data: session,status } = useSession();
   const [toggleIcon, setToggleIcon] = useState(true);
 
   const handleClick = () => {
     setToggleIcon(!toggleIcon);
   };
+
+  const handleLogout = () => {
+    logoutUser();
+  };
+
+  if (status === "loading") return null
+
   return (
     <nav className={Styles.container}>
       <Link href="/" className={Styles.link}>
@@ -30,11 +41,12 @@ const Header = () => {
           </div>
         </div>
       </Link>
+
       <div className={Styles.searchContainer}>
         <input className={Styles.searchInput} placeholder="İlan ara..." />
         <LuSearch className={Styles.searchIcon} />
       </div>
-      
+
       <div className={Styles.navLinks}>
         <div className={Styles.navItem}>
           <Link href="/offer-trip" className={Styles.link}>
@@ -46,26 +58,44 @@ const Header = () => {
             Aktif İlanlar
           </Link>
         </div>
-        <div className={Styles.navItem}>
-          <Link href="/signin" className={Styles.link}>
-            Giriş Yap
-          </Link>
-        </div>
-        <div className={Styles.navItem}>
-          <Link href="/register" className={Styles.link}>
-            Üye Ol
-          </Link>
-        </div>
+
+        {session ? (
+          <>
+            <div className={Styles.navItem}>
+              <Link href="/profile" className={Styles.link}>
+                Profili Görüntüle
+              </Link>
+            </div>
+            <div className={Styles.navItem}>
+              <button onClick={handleLogout} className={Styles.link}>
+                Çıkış Yap
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={Styles.navItem}>
+              <Link href="/signin" className={Styles.link}>
+                Giriş Yap
+              </Link>
+            </div>
+            <div className={Styles.navItem}>
+              <Link href="/register" className={Styles.link}>
+                Üye Ol
+              </Link>
+            </div>
+          </>
+        )}
       </div>
-      {toggleIcon ? (
-        <button onClick={handleClick} className={Styles.navItem}>
+
+      <button onClick={handleClick} className={Styles.navItem}>
+        {toggleIcon ? (
           <MdClose className={Styles.hamburgerIcon} />
-        </button>
-      ) : (
-        <button onClick={handleClick} className={Styles.navItem}>
+        ) : (
           <GiHamburgerMenu className={Styles.hamburgerIcon} />
-        </button>
-      )}
+        )}
+      </button>
+
       {toggleIcon && (
         <div className={Styles.hamburgerLinks}>
           <div className={Styles.navItem}>
@@ -78,16 +108,34 @@ const Header = () => {
               Aktif İlanlar
             </Link>
           </div>
-          <div className={Styles.navItem}>
-            <Link href="/signin" className={Styles.link}>
-              Giriş Yap
-            </Link>
-          </div>
-          <div className={Styles.navItem}>
-            <Link href="/register" className={Styles.link}>
-              Üye Ol
-            </Link>
-          </div>
+
+          {session ? (
+            <>
+              <div className={Styles.navItem}>
+                <Link href="/profile" className={Styles.link}>
+                   Profili Görüntüle
+                </Link>
+              </div>
+              <div className={Styles.navItem}>
+                <button onClick={handleLogout} className={Styles.link}>
+                  Çıkış Yap
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={Styles.navItem}>
+                <Link href="/signin" className={Styles.link}>
+                  Giriş Yap
+                </Link>
+              </div>
+              <div className={Styles.navItem}>
+                <Link href="/register" className={Styles.link}>
+                  Üye Ol
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       )}
     </nav>

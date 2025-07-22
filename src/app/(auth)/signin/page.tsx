@@ -2,8 +2,21 @@ import React from "react";
 import styles from "./signin.module.css";
 import SignInForm from "@/components/signinform/SignInForm";
 import Image from "next/image";
+import { getServerAuthSession } from "@/lib/getServerAuthSession";
+import {redirect} from "next/navigation"
+import { authOptions } from "@/lib/authOptions";
+export const metadata ={
+  title:"Giriş Yap",
+  description:"Sign in page for existing users",
+  
+}
 
-const SignIn = () => {
+const SignIn = async () => {
+  const session= await getServerAuthSession(authOptions)
+  
+    if(session){
+      redirect("/")
+    }
   return (
     <main className={styles.container}>
       <Image

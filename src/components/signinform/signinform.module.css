@@ -67,6 +67,12 @@
     color: white;
     padding: 0 5px;
   }
+
+  .p{
+  color:red;
+  font-size: 18px;
+  font-weight: 600;
+}
   
   .button {
     min-width: 300px;
@@ -169,4 +175,23 @@
       font-size: 25px;
     }
   }
+  @media screen and (max-width: 500px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+    border-radius: 30px;
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .button {
+    min-width: 100%;
+  }
+
+  .linkContainer {
+    font-size: 15px;
+  }
+}
   
