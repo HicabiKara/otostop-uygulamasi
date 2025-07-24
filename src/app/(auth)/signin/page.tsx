@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./signin.module.css";
-import SignInForm from "@/components/signinform/SignInForm";
+import SignInForm from "@/components/forms/signinform/SignInForm";
 import Image from "next/image";
 import { getServerAuthSession } from "@/lib/getServerAuthSession";
 import {redirect} from "next/navigation"
