@@ -9,3 +9,38 @@ export async function registerUser(formData: any) {
   if (!res.ok) throw new Error(data.message || "Kayıt başarısız");
   return data;
 }
+
+
+export async function updateProfile(formData: {
+  email: string
+  name: string
+  birthDate: string
+}) {
+  const res = await fetch("/api/user/update-profile", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  })
+
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.message || "Profil güncellenemedi")
+  return data
+}
+
+export const changeUserPassword = async (data: {
+  currentPassword: string
+  newPassword: string
+  confirmNewPassword: string
+}) => {
+    const res = await fetch("/api/user/change-password", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+
+  const responseData = await res.json()
+   if (!res.ok) {
+    throw new Error(responseData.message || "Şifre güncellenemedi.")
+  }
+  return responseData
+}

@@ -1,0 +1,130 @@
+.container {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(128, 128, 128, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 50px;
+}
+
+.title {
+  margin: 20px auto;
+}
+
+.title h1 {
+  font-size: 36px;
+  color: white;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  position: relative;
+  margin: 25px 0;
+  width: 300px;
+}
+
+.item input {
+  color:green;
+  border: none;
+  padding: 25px 15px 15px 15px;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.item input:disabled {
+  background-color: #f0f0f0;
+  color: #777;
+}
+
+.item label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+  color: green;
+  font-weight: 600;
+  transition: 0.3s ease all;
+  pointer-events: none;
+}
+
+.item input:focus + label,
+.item input:not(:placeholder-shown) + label {
+  top: -32px;
+  left: 10px;
+  font-size: 17px;
+  color: white;
+  padding: 0 5px;
+}
+
+.passwordLink {
+  position: absolute;
+  right: 10px;
+  bottom: -25px;
+  font-size: 14px;
+  color: green;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.actionContainer {
+  margin-top: 20px;
+  z-index: -5;
+}
+
+.button {
+  min-width: 250px;
+  font-size: 25px;
+  padding: 10px;
+  background-color: white;
+  color: green;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease-in-out;
+  z-index: 2;
+}
+.button span {
+  position: relative;
+  z-index: 3;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgb(213, 245, 212);
+  transition: width 0.3s ease-in-out;
+  z-index: 1;
+}
+.button:hover::before {
+  width: 100%;
+} 
+.error{
+  color: #ff4d4f;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  background-color: #ffeaea;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ff4d4f;
+}
