@@ -4,7 +4,6 @@ import SignInForm from "@/components/forms/signinform/SignInForm";
 import Image from "next/image";
 import { getServerAuthSession } from "@/lib/getServerAuthSession";
 import {redirect} from "next/navigation"
-import { authOptions } from "@/lib/authOptions";
 export const metadata ={
   title:"Giriş Yap",
   description:"Sign in page for existing users",
@@ -12,7 +11,7 @@ export const metadata ={
 }
 
 const SignIn = async () => {
-  const session= await getServerAuthSession(authOptions)
+  const session= await getServerAuthSession()
   
     if(session){
       redirect("/")

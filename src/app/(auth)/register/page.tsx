@@ -5,14 +5,13 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { getServerAuthSession } from "@/lib/getServerAuthSession";
 import { redirect } from "next/navigation"
-import { authOptions } from "@/lib/authOptions";
 export const metadata: Metadata = {
   title: "Üye Ol",
   description: "Register page for new users",
 }
 
 const Register = async () => {
-  const session = await getServerAuthSession(authOptions)
+  const session = await getServerAuthSession()
 
   if (session) {
     redirect("/")
