@@ -1,8 +1,7 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from "./page.module.css"
-import Image from "next/image"
 import Modal from "@/components/modal/Modal"
 import EditProfileForm from "@/components/forms/editprofileform/EditProfileForm"
 import ChangePasswordForm from "@/components/forms/changePasswordForm/ChangePasswordForm"
@@ -11,20 +10,41 @@ import calculateAge from "@/lib/calculateUserAge"
 import { useSession } from "next-auth/react"
 import { updateProfile, changeUserPassword } from "@/lib/api"
 import { redirect } from "next/navigation"
+import ProfileImageUploader from "@/components/profile-image-uploader/ProfileImageUploader"
+import { openModal,closeModal } from "@/features/ui/uiSlice"
+import { useAppDispatch} from "@/features/hook"
 
 export default function ProfilePage() {
   const { data: session, update } = useSession()
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
+  const dispatch = useAppDispatch()
+  
   const [profileLoading, setProfileLoading] = useState(false)
   const [profileError, setProfileError] = useState("")
   const [passwordLoading, setPasswordLoading] = useState(false)
   const [passwordError, setPasswordError] = useState("")
 
-
-
   const user = session?.user
   const age = user?.birthDate ? calculateAge(user.birthDate) : null
+
+  // Yerel state ile profil resmi kontrolü, session güncellenince resetlenir
+  const [profileImage, setProfileImage] = useState(
+    user?.image
+      ? user.image
+      : user?.gender === "male"
+      ? "/male-avatar.png"
+      : "/female-avatar.png"
+  )
+
+  // Eğer session.user.image değişirse profileImage state'ini güncelle
+  useEffect(() => {
+    setProfileImage(
+      user?.image
+        ? user.image
+        : user?.gender === "male"
+        ? "/male-avatar.png"
+        : "/female-avatar.png"
+    )
+  }, [user?.image, user?.gender])
 
   if (!session) redirect("/")
 
@@ -34,7 +54,7 @@ export default function ProfilePage() {
     try {
       await updateProfile(formData)
       await update({ ...formData })
-      setIsProfileModalOpen(false)
+     
     } catch (err: any) {
       setProfileError(err.message)
     } finally {
@@ -51,14 +71,18 @@ export default function ProfilePage() {
     setPasswordError("")
     try {
       await changeUserPassword(data)
-      setIsPasswordModalOpen(false)
+     
       logoutUser()
     } catch (error: any) {
       setPasswordError(error.message || "Şifre güncellenirken bir hata oluştu.")
-    }
-    finally {
+    } finally {
       setPasswordLoading(false)
     }
+  }
+
+  const handleImageUploadSuccess = async (imageUrl: string) => {
+    setProfileImage(imageUrl)  // Anında görsel güncelle
+    await update({ image: imageUrl })  // Session da güncellensin
   }
 
   return (
@@ -66,41 +90,59 @@ export default function ProfilePage() {
       <h1 className={styles.heading}>Profil Sayfanız</h1>
 
       <div className={styles.card}>
-        <Image
-          className={styles.avatar}
-          src={user?.gender === "male" ? "/male-avatar.png" : "/female-avatar.png"}
-          width={100}
-          height={100}
-          alt="Profil Resmi"
+        <ProfileImageUploader
+          currentImage={profileImage}
+          onUploadSuccess={handleImageUploadSuccess}
         />
+
         <div className={styles.info}>
           <h2>{user?.name || "İsimsiz Kullanıcı"}</h2>
           <p>{user?.email || "Email tanımsız"}</p>
-          {user?.gender && <p>Cinsiyet: <span className={styles.detailValue}>{user.gender === "male" ? "Erkek" : "Kadın"}</span></p>}
+          {user?.gender && (
+            <p>
+              Cinsiyet:{" "}
+              <span className={styles.detailValue}>
+                {user.gender === "male" ? "Erkek" : "Kadın"}
+              </span>
+            </p>
+          )}
           {user?.birthDate && (
-            <p>Doğum Tarihi: <span className={styles.detailValue}>{new Date(user.birthDate).toLocaleDateString("tr-TR")} ({age} yaşında)</span></p>
+            <p>
+              Doğum Tarihi:{" "}
+              <span className={styles.detailValue}>
+                {new Date(user.birthDate).toLocaleDateString("tr-TR")} ({age} yaşında)
+              </span>
+            </p>
           )}
         </div>
       </div>
 
       <div className={styles.actions}>
-        <button className={styles.editBtn} onClick={() => setIsProfileModalOpen(true)}>Profili Düzenle</button>
-        <button className={styles.logoutBtn} onClick={logoutUser}>Çıkış Yap</button>
+        <button className={styles.editBtn} onClick={() => dispatch(openModal("update-profile"))}>
+          Profili Düzenle
+        </button>
+        <button className={styles.logoutBtn} onClick={logoutUser}>
+          Çıkış Yap
+        </button>
       </div>
 
-      <Modal isOpen={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)}>
+      <Modal name="update-profile">
         <EditProfileForm
-          currentData={{ email: user?.email || "", name: user?.name || "", birthDate: user?.birthDate || "" }}
+          currentData={{
+            email: user?.email || "",
+            name: user?.name || "",
+            birthDate: user?.birthDate || "",
+          }}
           onUpdate={handleUpdate}
-          onChangePassword={() => setIsPasswordModalOpen(true)}
+          onChangePassword={() => dispatch(openModal("change-password"))}
           errorMessage={profileError}
           loading={profileLoading}
         />
       </Modal>
 
-      <Modal isOpen={isPasswordModalOpen} onClose={() => setIsPasswordModalOpen(false)}>
+      <Modal name="change-password">
         <ChangePasswordForm
-          onCancel={() => setIsPasswordModalOpen(false)}
+          onCancel={()=>dispatch(closeModal())}
           onSubmit={handlePasswordUpdate}
           errorMessage={passwordError}
           loading={passwordLoading}

@@ -8,6 +8,7 @@ declare module "next-auth" {
       email?: string | null
       gender?: "male" | "female";
       birthDate?: string;
+      image?: string;
     }
   }
 
@@ -17,6 +18,7 @@ declare module "next-auth" {
     email?: string | null
     gender?: "male" | "female";
     birthDate?: string;
+    image?: string;
   }
 }
 

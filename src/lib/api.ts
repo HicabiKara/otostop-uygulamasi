@@ -44,3 +44,20 @@ export const changeUserPassword = async (data: {
   }
   return responseData
 }
+
+
+export async function uploadAndUpdateProfileImage(file: File) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch("/api/user/upload-profile-image", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.error || "Profil resmi yüklenemedi.");
+
+  return data.imageUrl;
+}

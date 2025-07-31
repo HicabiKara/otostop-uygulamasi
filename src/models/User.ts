@@ -1,12 +1,13 @@
-import  { Schema, Document, models, model } from 'mongoose'
+import { Schema, Document, models, model } from 'mongoose';
 
 export interface IUser extends Document {
-  name: string
-  surname?: string
-  email: string
-  password: string
-  birthDate: Date
-  gender: "male" | "female"
+  name: string;
+  surname?: string;
+  email: string;
+  password: string;
+  birthDate: Date;
+  gender: 'male' | 'female';
+  image?: string; 
 }
 
 const userSchema = new Schema<IUser>({
@@ -15,8 +16,9 @@ const userSchema = new Schema<IUser>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   birthDate: { type: Date, required: true },
-  gender: { type: String, enum: ["male", "female"], required: true },
-})
+  gender: { type: String, enum: ['male', 'female'], required: true },
+  image: { type: String },
+});
 
-const User = models.User || model<IUser>('User', userSchema)
-export default User
+const User = models.User || model<IUser>('User', userSchema);
+export default User;

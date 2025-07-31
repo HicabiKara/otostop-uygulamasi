@@ -49,6 +49,7 @@ export const authOptions: AuthOptions = {
           email: user.email,
           gender: user.gender,
           birthDate: user.birthDate.toISOString(),
+          image: user.image,
         };
       },
     }),
@@ -60,28 +61,31 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async jwt({ token, user, trigger, session }) {
-      // İlk giriş yaparken user bilgilerini token'a ekle
-      if (user) {
-        const customUser = user as IUser & {
-          gender?: string;
-          birthDate?: string;
-        };
-        token.id = customUser.id;
-        token.email = customUser.email;
-        token.name = customUser.name;
-        token.gender = customUser.gender;
-        token.birthDate = customUser.birthDate;
-      }
+  // İlk login sırasında
+  if (user) {
+    const customUser = user as IUser & {
+      gender?: string;
+      birthDate?: string;
+      image?: string;
+    };
+    token.id = customUser.id;
+    token.email = customUser.email;
+    token.name = customUser.name;
+    token.gender = customUser.gender;
+    token.birthDate = customUser.birthDate;
+    token.image = customUser.image;
+  }
 
-      // Eğer bir update tetiklenmişse (örneğin update() fonksiyonu kullanıldıysa)
-      if (trigger === "update" && session) {
-        token.name = session.name;
-        token.email = session.email;
-        token.birthDate = session.birthDate;
-      }
+  // update() tetiklenince güncellenen alanları token'a aktar
+  if (trigger === "update" && session) {
+    if (session.name) token.name = session.name;
+    if (session.email) token.email = session.email;
+    if (session.birthDate) token.birthDate = session.birthDate;
+    if (session.image) token.image = session.image; 
+  }
 
-      return token;
-    },
+  return token;
+},
 
     async session({ session, token }: { session: any; token: JWT }) {
       if (token && session.user) {
@@ -90,6 +94,8 @@ export const authOptions: AuthOptions = {
         session.user.email = token.email;
         session.user.gender = token.gender;
         session.user.birthDate = token.birthDate;
+        session.user.image = token.image;
+
       }
       return session;
     },

@@ -34,6 +34,7 @@ if (isNaN(parsedBirthDate.getTime())) {
       password:hashedPassword,
       birthDate: parsedBirthDate,
       gender,
+      image: undefined,
       createdAt: new Date(),
     })
 
