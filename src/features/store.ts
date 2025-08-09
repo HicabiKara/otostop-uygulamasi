@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-
+import uiReducer from "../features/ui/uiSlice"
 
 export function makeStore() {
   return configureStore({
     reducer: {
-     
+      ui:uiReducer
     },
   })
 }
