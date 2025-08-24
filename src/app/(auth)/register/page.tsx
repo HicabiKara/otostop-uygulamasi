@@ -21,9 +21,8 @@ const Register = async () => {
       <Image
         src="/background-img.png"
         alt="Background Image"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
+        fill
+        style={{ objectFit: "cover", objectPosition: "center" }}
         quality={100}
         className={styles.backgroundImage}
       />

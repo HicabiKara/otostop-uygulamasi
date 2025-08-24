@@ -12,7 +12,7 @@ import { logoutUser } from "@/lib/logout";
 
 
 const Header = () => {
-  const { data: session,status } = useSession();
+  const { data: session } = useSession();
   const [toggleIcon, setToggleIcon] = useState(true);
 
   const handleClick = () => {
@@ -23,7 +23,6 @@ const Header = () => {
     logoutUser();
   };
 
-  if (status === "loading") return null
 
   return (
     <nav className={Styles.container}>
@@ -49,12 +48,12 @@ const Header = () => {
 
       <div className={Styles.navLinks}>
         <div className={Styles.navItem}>
-          <Link href="/offer-trip" className={Styles.link}>
+          <Link href="/create-trip" className={Styles.link}>
             Yolculuk Yayınla
           </Link>
         </div>
         <div className={Styles.navItem}>
-          <Link href="/active-ads" className={Styles.link}>
+          <Link href="/trips" className={Styles.link}>
             Aktif İlanlar
           </Link>
         </div>
