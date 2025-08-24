@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import LoginRequiredHandler from "@/components/LoginRequiredHandler/LoginRequiredHandler";
 import LoginRequiredModal from "@/components/modals/login-required-modal/LoginRequiredModal";
 import Modal from "@/components/ui/modal/Modal";
+
 export default function Home() {
   return (
     <main className={styles.container}>
