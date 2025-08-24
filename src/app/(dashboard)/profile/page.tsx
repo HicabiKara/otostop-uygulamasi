@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import styles from "./page.module.css"
-import Modal from "@/components/modal/Modal"
+import Modal from "@/components/ui/modal/Modal"
 import EditProfileForm from "@/components/forms/editprofileform/EditProfileForm"
 import ChangePasswordForm from "@/components/forms/changePasswordForm/ChangePasswordForm"
 import { logoutUser } from "@/lib/logout"
@@ -13,6 +13,8 @@ import { redirect } from "next/navigation"
 import ProfileImageUploader from "@/components/profile-image-uploader/ProfileImageUploader"
 import { openModal,closeModal } from "@/features/ui/uiSlice"
 import { useAppDispatch} from "@/features/hook"
+import IncomingTripRequestsList from "@/components/trips/trip-requests/incoming-trip-requests/IncomingTripRequestsList"
+import MyTripRequestsList from "@/components/trips/trip-requests/mytrip-request-list/MyTripRequestsList"
 
 export default function ProfilePage() {
   const { data: session, update } = useSession()
@@ -125,7 +127,13 @@ export default function ProfilePage() {
           Çıkış Yap
         </button>
       </div>
-
+      <h2 className={styles.heading}>Yolculuk Durumları</h2>
+      <div className={styles.card}>
+        <IncomingTripRequestsList/>
+      </div>
+      <div className={styles.card}>
+        <MyTripRequestsList/>
+      </div>
       <Modal name="update-profile">
         <EditProfileForm
           currentData={{
