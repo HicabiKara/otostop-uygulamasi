@@ -1,0 +1,192 @@
+.container {
+  width: 500px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  background-color: rgba(128, 128, 128, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.title h1 {
+  font-size: 40px;
+  color: white;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .itemContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.item {
+  position: relative;
+  margin:10px 0;
+  width: 100%;
+  max-width: 300px;
+
+}
+
+
+.item input,
+.item select,
+.item textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.08);
+  background-color: white;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.item label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+  color: green;
+  font-weight: 600;
+  transition: 0.3s ease all;
+  pointer-events: none;
+}
+
+.p {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(255, 80, 80, 0.08);
+  color: #ff6b6b;
+  border: 1px solid rgba(255,80,80,0.18);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.actionContainer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.item select {
+  width: 100%;
+  padding: 25px 15px 15px 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:160px;
+}
+
+
+.item select:focus + label,
+.item select:not([value=""]) + label {
+  top: -32px;
+  left: 10px;
+  font-size: 17px;
+  color: white;
+  background: transparent;
+  padding: 0 5px;
+}
+
+
+/* ANİMASYON */
+.item input:focus + label,
+.item input:not(:placeholder-shown) + label,
+.item textarea:focus + label,
+.item textarea:not(:placeholder-shown) + label {
+  top: -32px;
+  left: 10px;
+  font-size: 17px;
+  color: white;
+  background: transparent;
+  padding: 0 5px;
+}
+
+.button {
+  min-width: 300px;
+  padding: 12px;
+  font-size: 25px;
+  background-color: white;
+  color: green;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.button span {
+  position: relative;
+  z-index: 3;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgb(213, 245, 212);
+  transition: width 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.actionContainer {
+  margin-top: 10px;
+}
+
+.p {
+  color: red;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1111px) {
+  .container {
+    width: 350px;
+  }
+
+  .title h1 {
+    font-size: 35px;
+  }
+
+  .item {
+    max-width: 250px;
+  }
+
+  .button {
+    min-width: 250px;
+    font-size: 22px;
+  }
+
+  .item label {
+    font-size: 17px;
+  }
+}

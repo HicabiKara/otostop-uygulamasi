@@ -1,0 +1,72 @@
+.container {
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 2rem;
+  border:1px solid green;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profileImage {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.meta {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.details p {
+  margin: 0.5rem 0;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.requestButton {
+  background-color: rgb(7, 136, 7);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.requestButton:hover {
+  background-color: #27ae60;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.infoMessage{
+  color:green;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.successMessage{
+  color:red;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
