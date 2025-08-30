@@ -88,14 +88,14 @@ Web Otostop Uygulaması, Next.js ve TypeScript kullanılarak geliştirilmiş, ku
 ## 🖼️ Ekran Görüntüleri
 Kullanıcı dostu arayüz, profil yönetimi ve yolculuk kartları ile modern bir deneyim sunar.
 
-![Ana Sayfa](screenshots/anasayfa.jpg)
-![Aktif İlanlar](screenshots/aktif-ilanlar.jpg)
-![Üye Ol](screenshots/üye-ol.jpg)
-![Giriş Yap](screenshots/giriş-yap.jpg)
-![İlan Oluştur](screenshots/ilan-oluştur.jpg)
-![Profil Güncelleme](screenshots/profil-güncelle.jpg)
-![Profil Sayfası Görünümü](screenshots/profil-sayfası-1.jpg)
-![Profil Sayfası Görünümü](screenshots/profil-sayfası-2.jpg)
+![Ana Sayfa](screenshots/anasayfa.JPG)
+![Aktif İlanlar](screenshots/aktif-ilanlar.JPG)
+![Üye Ol](screenshots/üye-ol.JPG)
+![Giriş Yap](screenshots/giriş-yap.JPG)
+![İlan Oluştur](screenshots/ilan-oluştur.JPG)
+![Profil Güncelleme](screenshots/profil-güncelle.JPG)
+![Profil Sayfası Görünümü](screenshots/profil-sayfası-1.JPG)
+![Profil Sayfası Görünümü](screenshots/profil-sayfası-2.JPG)
 
 ---
 
