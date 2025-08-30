@@ -93,7 +93,6 @@ Kullanıcı dostu arayüz, profil yönetimi ve yolculuk kartları ile modern bir
 ![Üye Ol](screenshots/üye-ol.jpg)
 ![Giriş Yap](screenshots/giriş-yap.jpg)
 ![İlan Oluştur](screenshots/ilan-oluştur.jpg)
-![Üye Ol](screenshots/üye-ol.jpg)
 ![Profil Güncelleme](screenshots/profil-güncelle.jpg)
 ![Profil Sayfası Görünümü](screenshots/profil-sayfası-1.jpg)
 ![Profil Sayfası Görünümü](screenshots/profil-sayfası-2.jpg)
